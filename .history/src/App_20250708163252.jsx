@@ -1,3 +1,4 @@
+import {Task} from '../node_modules/rollup/dist/es/shared/watch';
 function App () {
   return (
     <div className="app">
@@ -20,10 +21,7 @@ function App () {
       <div className="completed-task-container">
         <h2>Completed Tasks</h2>
         <button className="close-button">+</button>
-        <CompletedTaskList />
       </div>
-
-      <Footer />
     </div>
   );
 }
@@ -52,42 +50,16 @@ const TaskList = () => {
   );
 };
 
-const TaskItem = () => {
+const TaskItem = ({title, priority, dueDate}) => {
   return (
     <li className="task-item">
-      <div className="task-info">
-        <div>
-          Title: <strong>Medium</strong>
-        </div>
-        <div className="task-deadline">
-          Due: {new Date ().toLocaleString ()}
-        </div>
-      </div>
-      <div className="task-buttons">
-        <button className="complete-button">Complete</button>
-        <button className="delete-button">Delete</button>
-      </div>
+      <span>{title}</span>
+      <span className={`priority ${priority}`}>
+        {priority.charAt (0).toUpperCase () + priority.slice (1)} Priority
+      </span>
+      <span className="due-date">{dueDate}</span>
+      <button className="complete-button">Complete</button>
     </li>
-  );
-};
-
-const CompletedTaskList = () => {
-  return (
-    <ul className="completed-task-list">
-      <TaskItem />
-    </ul>
-  );
-};
-
-const Footer = () => {
-  return (
-    <footer className="footer">
-      <p>
-        Technologies and React concepts used: React, JSX, props, useState,
-        component composition, conditional rendering,
-        array methods (map, filter), and event handling.
-      </p>
-    </footer>
   );
 };
 

@@ -82,11 +82,7 @@ const CompletedTaskList = () => {
 const Footer = () => {
   return (
     <footer className="footer">
-      <p>
-        Technologies and React concepts used: React, JSX, props, useState,
-        component composition, conditional rendering,
-        array methods (map, filter), and event handling.
-      </p>
+      <p>Task List App © 2025</p>
     </footer>
   );
 };

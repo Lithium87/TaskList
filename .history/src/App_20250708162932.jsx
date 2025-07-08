@@ -20,10 +20,7 @@ function App () {
       <div className="completed-task-container">
         <h2>Completed Tasks</h2>
         <button className="close-button">+</button>
-        <CompletedTaskList />
       </div>
-
-      <Footer />
     </div>
   );
 }
@@ -47,47 +44,14 @@ const TaskForm = () => {
 const TaskList = () => {
   return (
     <ul className="task-list">
-      <TaskItem title="Task 1" priority="low" dueDate="2023-10-01T10:00" />
-    </ul>
-  );
-};
-
-const TaskItem = () => {
-  return (
-    <li className="task-item">
-      <div className="task-info">
-        <div>
-          Title: <strong>Medium</strong>
-        </div>
-        <div className="task-deadline">
-          Due: {new Date ().toLocaleString ()}
-        </div>
-      </div>
-      <div className="task-buttons">
+      {/* Example task item */}
+      <li className="task-item">
+        <span>Task Title</span>
+        <span className="priority">High Priority</span>
+        <span className="due-date">2023-10-01 12:00</span>
         <button className="complete-button">Complete</button>
-        <button className="delete-button">Delete</button>
-      </div>
-    </li>
-  );
-};
-
-const CompletedTaskList = () => {
-  return (
-    <ul className="completed-task-list">
-      <TaskItem />
+      </li>
     </ul>
-  );
-};
-
-const Footer = () => {
-  return (
-    <footer className="footer">
-      <p>
-        Technologies and React concepts used: React, JSX, props, useState,
-        component composition, conditional rendering,
-        array methods (map, filter), and event handling.
-      </p>
-    </footer>
   );
 };
 

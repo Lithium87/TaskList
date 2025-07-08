@@ -20,10 +20,7 @@ function App () {
       <div className="completed-task-container">
         <h2>Completed Tasks</h2>
         <button className="close-button">+</button>
-        <CompletedTaskList />
       </div>
-
-      <Footer />
     </div>
   );
 }
@@ -71,24 +68,6 @@ const TaskItem = () => {
   );
 };
 
-const CompletedTaskList = () => {
-  return (
-    <ul className="completed-task-list">
-      <TaskItem />
-    </ul>
-  );
-};
-
-const Footer = () => {
-  return (
-    <footer className="footer">
-      <p>
-        Technologies and React concepts used: React, JSX, props, useState,
-        component composition, conditional rendering,
-        array methods (map, filter), and event handling.
-      </p>
-    </footer>
-  );
-};
+const CompletedTaskList = () => {};
 
 export default App;

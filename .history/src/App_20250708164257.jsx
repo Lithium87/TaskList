@@ -20,10 +20,7 @@ function App () {
       <div className="completed-task-container">
         <h2>Completed Tasks</h2>
         <button className="close-button">+</button>
-        <CompletedTaskList />
       </div>
-
-      <Footer />
     </div>
   );
 }
@@ -52,7 +49,7 @@ const TaskList = () => {
   );
 };
 
-const TaskItem = () => {
+const TaskItem = ({title, priority, dueDate}) => {
   return (
     <li className="task-item">
       <div className="task-info">
@@ -63,31 +60,8 @@ const TaskItem = () => {
           Due: {new Date ().toLocaleString ()}
         </div>
       </div>
-      <div className="task-buttons">
-        <button className="complete-button">Complete</button>
-        <button className="delete-button">Delete</button>
-      </div>
+      <div className="task-buttons">buttons</div>
     </li>
-  );
-};
-
-const CompletedTaskList = () => {
-  return (
-    <ul className="completed-task-list">
-      <TaskItem />
-    </ul>
-  );
-};
-
-const Footer = () => {
-  return (
-    <footer className="footer">
-      <p>
-        Technologies and React concepts used: React, JSX, props, useState,
-        component composition, conditional rendering,
-        array methods (map, filter), and event handling.
-      </p>
-    </footer>
   );
 };
 
