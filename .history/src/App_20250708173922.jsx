@@ -19,7 +19,7 @@ function App () {
       <div className="task-container">
         <h1>Task List with Priority</h1>
         <button
-          className={`close-button ${openSection.taskList ? 'open' : ''}`}
+          className="close-button"
           onClick={() => toggleSection ('taskList')}
         >
           +
@@ -30,7 +30,7 @@ function App () {
       <div className="task-container">
         <h2>Tasks</h2>
         <button
-          className={`close-button ${openSection.tasks ? 'open' : ''}`}
+          className="close-button"
           onClick={() => toggleSection ('tasks')}
         >
           +
@@ -45,7 +45,7 @@ function App () {
       <div className="completed-task-container">
         <h2>Completed Tasks</h2>
         <button
-          className={`close-button ${openSection.completedTasks ? 'open' : ''}`}
+          className="close-button"
           onClick={() => toggleSection ('completedTasks')}
         >
           +

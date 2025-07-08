@@ -18,39 +18,24 @@ function App () {
     <div className="app">
       <div className="task-container">
         <h1>Task List with Priority</h1>
-        <button
-          className={`close-button ${openSection.taskList ? 'open' : ''}`}
-          onClick={() => toggleSection ('taskList')}
-        >
-          +
-        </button>
-        {openSection.taskList && <TaskForm />}
+        <button className="close-button" onClick={toggleSection}>+</button>
+        <TaskForm />
       </div>
 
       <div className="task-container">
         <h2>Tasks</h2>
-        <button
-          className={`close-button ${openSection.tasks ? 'open' : ''}`}
-          onClick={() => toggleSection ('tasks')}
-        >
-          +
-        </button>
-        {openSection.tasks && <TaskList />}
+        <button className="close-button" onClick={toggleSection}>+</button>
         <div className="sort-controls">
           <button className="sort-button">By date</button>
           <button className="sort-button">By Priority</button>
         </div>
+        <TaskList />
       </div>
 
       <div className="completed-task-container">
         <h2>Completed Tasks</h2>
-        <button
-          className={`close-button ${openSection.completedTasks ? 'open' : ''}`}
-          onClick={() => toggleSection ('completedTasks')}
-        >
-          +
-        </button>
-        {openSection.completedTasks && <CompletedTaskList />}
+        <button className="close-button" onClick={toggleSection}>+</button>
+        <CompletedTaskList />
       </div>
 
       <Footer />

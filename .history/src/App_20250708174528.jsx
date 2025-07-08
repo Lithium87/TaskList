@@ -45,7 +45,7 @@ function App () {
       <div className="completed-task-container">
         <h2>Completed Tasks</h2>
         <button
-          className={`close-button ${openSection.completedTasks ? 'open' : ''}`}
+          className="close-button"
           onClick={() => toggleSection ('completedTasks')}
         >
           +
