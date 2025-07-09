@@ -168,7 +168,7 @@ const TaskItem = ({task, deleteTask, completeTask}) => {
         </div>
       </div>
       <div className="task-buttons">
-        {!task.completed &&
+        {task.completed &&
           <button
             className="complete-button"
             onClick={() => completeTask (task.id)}

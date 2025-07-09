@@ -2,6 +2,7 @@ import {useState} from 'react';
 
 function App () {
   const [tasks, setTasks] = useState ([]);
+  const [completedTasks, setCompletedTasks] = useState ([]);
   const [openSection, setOpenSection] = useState ({
     taskList: false,
     tasks: true,
@@ -30,7 +31,7 @@ function App () {
   };
 
   const activeTasks = tasks.filter (task => !task.completed);
-  const completedTasks = tasks.filter (task => task.completed);
+  const completedTasksList = tasks.filter (task => task.completed);
 
   return (
     <div className="app">
@@ -74,10 +75,7 @@ function App () {
           +
         </button>
         {openSection.completedTasks &&
-          <CompletedTaskList
-            deleteTask={deleteTask}
-            completedTasks={completedTasks}
-          />}
+          <CompletedTaskList completedTasks={completedTasks} />}
       </div>
 
       <Footer />
@@ -168,13 +166,12 @@ const TaskItem = ({task, deleteTask, completeTask}) => {
         </div>
       </div>
       <div className="task-buttons">
-        {!task.completed &&
-          <button
-            className="complete-button"
-            onClick={() => completeTask (task.id)}
-          >
-            Complete
-          </button>}
+        <button
+          className="complete-button"
+          onClick={() => completeTask (task.id)}
+        >
+          Complete
+        </button>
         <button className="delete-button" onClick={() => deleteTask (task.id)}>
           Delete
         </button>
@@ -183,12 +180,11 @@ const TaskItem = ({task, deleteTask, completeTask}) => {
   );
 };
 
-const CompletedTaskList = ({completedTasks, deleteTask}) => {
+const CompletedTaskList = ({completedTasks}) => {
   return (
     <ul className="completed-task-list">
-      {completedTasks.map (task => (
-        <TaskItem key={task.id} task={task} deleteTask={deleteTask} />
-      ))}
+      {/* <TaskItem /> */}
+      gdd
     </ul>
   );
 };

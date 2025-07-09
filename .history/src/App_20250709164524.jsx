@@ -2,6 +2,7 @@ import {useState} from 'react';
 
 function App () {
   const [tasks, setTasks] = useState ([]);
+  const [completedTasks, setCompletedTasks] = useState ([]);
   const [openSection, setOpenSection] = useState ({
     taskList: false,
     tasks: true,
@@ -19,18 +20,8 @@ function App () {
     setTasks ([...tasks, {...task, completed: false, id: Date.now ()}]);
   };
 
-  const completeTask = id => {
-    setTasks (
-      tasks.map (task => (task.id === id ? {...task, completed: true} : task))
-    );
-  };
-
-  const deleteTask = id => {
-    setTasks (tasks.filter (task => task.id !== id));
-  };
-
   const activeTasks = tasks.filter (task => !task.completed);
-  const completedTasks = tasks.filter (task => task.completed);
+  const completedTasksList = tasks.filter (task => task.completed);
 
   return (
     <div className="app">
@@ -53,12 +44,7 @@ function App () {
         >
           +
         </button>
-        {openSection.tasks &&
-          <TaskList
-            completeTask={completeTask}
-            deleteTask={deleteTask}
-            activeTasks={activeTasks}
-          />}
+        {openSection.tasks && <TaskList activeTasks={activeTasks} />}
         <div className="sort-controls">
           <button className="sort-button">By date</button>
           <button className="sort-button">By Priority</button>
@@ -73,11 +59,7 @@ function App () {
         >
           +
         </button>
-        {openSection.completedTasks &&
-          <CompletedTaskList
-            deleteTask={deleteTask}
-            completedTasks={completedTasks}
-          />}
+        {openSection.completedTasks && <CompletedTaskList />}
       </div>
 
       <Footer />
@@ -141,22 +123,24 @@ const TaskForm = ({addTask}) => {
   );
 };
 
-const TaskList = ({activeTasks, deleteTask, completeTask}) => {
+const TaskList = ({activeTasks}) => {
   return (
     <ul className="task-list">
-      {activeTasks.map (task => (
-        <TaskItem
-          key={task.id}
-          task={task}
-          deleteTask={deleteTask}
-          completeTask={completeTask}
-        />
-      ))}
+      {activeTasks.map (task => <TaskItem key={task.id} task={task} />)}
     </ul>
   );
 };
 
-const TaskItem = ({task, deleteTask, completeTask}) => {
+const TaskItem = ({task}) => {
+  const completeTask = () => {
+    // Logic to mark task as completed
+    console.log (`Task ${task.id} completed`);
+  };
+  const deleteTask = () => {
+    // Logic to delete task
+    console.log (`Task ${task.id} deleted`);
+  };
+
   return (
     <li className={`task-item ${task.priority.toLowerCase ()}`}>
       <div className="task-info">
@@ -168,13 +152,7 @@ const TaskItem = ({task, deleteTask, completeTask}) => {
         </div>
       </div>
       <div className="task-buttons">
-        {!task.completed &&
-          <button
-            className="complete-button"
-            onClick={() => completeTask (task.id)}
-          >
-            Complete
-          </button>}
+        <button className="complete-button">Complete</button>
         <button className="delete-button" onClick={() => deleteTask (task.id)}>
           Delete
         </button>
@@ -183,12 +161,11 @@ const TaskItem = ({task, deleteTask, completeTask}) => {
   );
 };
 
-const CompletedTaskList = ({completedTasks, deleteTask}) => {
+const CompletedTaskList = () => {
   return (
     <ul className="completed-task-list">
-      {completedTasks.map (task => (
-        <TaskItem key={task.id} task={task} deleteTask={deleteTask} />
-      ))}
+      {/* <TaskItem /> */}
+      gdd
     </ul>
   );
 };
