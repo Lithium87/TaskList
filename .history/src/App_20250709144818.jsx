@@ -20,9 +20,6 @@ function App () {
     setTasks ([...tasks, {...task, completed: false, id: Date.now ()}]);
   };
 
-  const activeTasks = tasks.filter (task => !task.completed);
-  const completedTasksList = tasks.filter (task => task.completed);
-
   return (
     <div className="app">
       <div className="task-container">
@@ -44,7 +41,7 @@ function App () {
         >
           +
         </button>
-        {openSection.tasks && <TaskList activeTasks={activeTasks} />}
+        {openSection.tasks && <TaskList />}
         <div className="sort-controls">
           <button className="sort-button">By date</button>
           <button className="sort-button">By Priority</button>
@@ -92,7 +89,7 @@ const TaskForm = ({addTask}) => {
   };
 
   return (
-    <form className="task-form" onSubmit={handleSubmit}>
+    <form className="task-form">
       <input
         type="text"
         name="title"
@@ -118,28 +115,28 @@ const TaskForm = ({addTask}) => {
         required
         onChange={handleChange}
       />
-      <button type="submit" onSubmit={handleSubmit}>Add Task</button>
+      <button type="submit">Add Task</button>
     </form>
   );
 };
 
-const TaskList = ({activeTasks}) => {
+const TaskList = () => {
   return (
     <ul className="task-list">
-      {activeTasks.map (task => <TaskItem key={task.id} task={task} />)}
+      <TaskItem title="Task 1" priority="low" dueDate="2023-10-01T10:00" />
     </ul>
   );
 };
 
-const TaskItem = ({task}) => {
+const TaskItem = () => {
   return (
-    <li className={`task-item ${task.priority.toLowerCase ()}`}>
+    <li className="task-item">
       <div className="task-info">
         <div>
-          {task.title} <strong>{task.priority}</strong>
+          Title: <strong>Medium</strong>
         </div>
         <div className="task-deadline">
-          Due: {new Date (task.deadline).toLocaleString ()}
+          Due: {new Date ().toLocaleString ()}
         </div>
       </div>
       <div className="task-buttons">
@@ -153,8 +150,7 @@ const TaskItem = ({task}) => {
 const CompletedTaskList = () => {
   return (
     <ul className="completed-task-list">
-      {/* <TaskItem /> */}
-      gdd
+      <TaskItem />
     </ul>
   );
 };

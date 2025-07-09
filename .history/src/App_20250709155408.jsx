@@ -133,13 +133,13 @@ const TaskList = ({activeTasks}) => {
 
 const TaskItem = ({task}) => {
   return (
-    <li className={`task-item ${task.priority.toLowerCase ()}`}>
+    <li className="task-item">
       <div className="task-info">
         <div>
-          {task.title} <strong>{task.priority}</strong>
+          {task.formData.title} <strong>{task.formData.priority}</strong>
         </div>
         <div className="task-deadline">
-          Due: {new Date (task.deadline).toLocaleString ()}
+          Due: {new Date (task.formData.deadline).toLocaleString ()}
         </div>
       </div>
       <div className="task-buttons">
@@ -153,8 +153,7 @@ const TaskItem = ({task}) => {
 const CompletedTaskList = () => {
   return (
     <ul className="completed-task-list">
-      {/* <TaskItem /> */}
-      gdd
+      <TaskItem />
     </ul>
   );
 };

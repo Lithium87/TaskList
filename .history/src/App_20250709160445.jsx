@@ -133,7 +133,7 @@ const TaskList = ({activeTasks}) => {
 
 const TaskItem = ({task}) => {
   return (
-    <li className={`task-item ${task.priority.toLowerCase ()}`}>
+    <li className={`task-item ${task.priority}`}>
       <div className="task-info">
         <div>
           {task.title} <strong>{task.priority}</strong>

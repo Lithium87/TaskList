@@ -126,20 +126,20 @@ const TaskForm = ({addTask}) => {
 const TaskList = ({activeTasks}) => {
   return (
     <ul className="task-list">
-      {activeTasks.map (task => <TaskItem key={task.id} task={task} />)}
+      {activeTasks.map (task => <TaskItem />)}
     </ul>
   );
 };
 
-const TaskItem = ({task}) => {
+const TaskItem = () => {
   return (
-    <li className={`task-item ${task.priority.toLowerCase ()}`}>
+    <li className="task-item">
       <div className="task-info">
         <div>
-          {task.title} <strong>{task.priority}</strong>
+          Title: <strong>Medium</strong>
         </div>
         <div className="task-deadline">
-          Due: {new Date (task.deadline).toLocaleString ()}
+          Due: {new Date ().toLocaleString ()}
         </div>
       </div>
       <div className="task-buttons">
@@ -153,8 +153,7 @@ const TaskItem = ({task}) => {
 const CompletedTaskList = () => {
   return (
     <ul className="completed-task-list">
-      {/* <TaskItem /> */}
-      gdd
+      <TaskItem />
     </ul>
   );
 };
