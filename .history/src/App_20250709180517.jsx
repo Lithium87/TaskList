@@ -90,20 +90,16 @@ function App () {
           />}
         <div className="sort-controls">
           <button
-            className={`sort-button ${sortType === 'date' ? 'active' : ''}`}
+            className="sort-button"
             onClick={() => toggleSortOrder ('date')}
           >
             By date
-            {' '}
-            {sortType === 'date' && (sortOrder === 'asc' ? '\u2191' : '\u2193')}
           </button>
           <button
-            className={`sort-button ${sortType === 'priority' ? 'active' : ''}`}
+            className="sort-button"
             onClick={() => toggleSortOrder ('priority')}
           >
             By Priority
-            {sortType === 'priority' &&
-              (sortOrder === 'asc' ? '\u2191' : '\u2193')}
           </button>
         </div>
       </div>

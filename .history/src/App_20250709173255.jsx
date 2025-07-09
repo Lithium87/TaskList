@@ -3,7 +3,6 @@ import {useState} from 'react';
 function App () {
   const [tasks, setTasks] = useState ([]);
   const [sortType, setSortType] = useState ('date');
-  const [sortOrder, setSortOrder] = useState ('asc');
   const [openSection, setOpenSection] = useState ({
     taskList: false,
     tasks: true,
@@ -31,34 +30,7 @@ function App () {
     setTasks (tasks.filter (task => task.id !== id));
   };
 
-  const sortTasks = tasks => {
-    if (sortType === 'date') {
-      return [...tasks].sort ((a, b) => {
-        const dateA = new Date (a.deadline);
-        const dateB = new Date (b.deadline);
-        return sortOrder === 'asc' ? dateA - dateB : dateB - dateA;
-      });
-    } else if (sortType === 'priority') {
-      const priorityOrder = {low: 1, medium: 2, high: 3};
-      return [...tasks].sort ((a, b) => {
-        return sortOrder === 'asc'
-          ? priorityOrder[a.priority] - priorityOrder[b.priority]
-          : priorityOrder[b.priority] - priorityOrder[a.priority];
-      });
-    }
-    return tasks;
-  };
-
-  const toggleSortOrder = type => {
-    if (sortType === type) {
-      setSortOrder (prev => (prev === 'asc' ? 'desc' : 'asc'));
-    } else {
-      setSortType (type);
-      setSortOrder ('asc');
-    }
-  };
-
-  const activeTasks = sortTasks (tasks.filter (task => !task.completed));
+  const activeTasks = tasks.filter (task => !task.completed);
   const completedTasks = tasks.filter (task => task.completed);
 
   return (
@@ -89,22 +61,8 @@ function App () {
             activeTasks={activeTasks}
           />}
         <div className="sort-controls">
-          <button
-            className={`sort-button ${sortType === 'date' ? 'active' : ''}`}
-            onClick={() => toggleSortOrder ('date')}
-          >
-            By date
-            {' '}
-            {sortType === 'date' && (sortOrder === 'asc' ? '\u2191' : '\u2193')}
-          </button>
-          <button
-            className={`sort-button ${sortType === 'priority' ? 'active' : ''}`}
-            onClick={() => toggleSortOrder ('priority')}
-          >
-            By Priority
-            {sortType === 'priority' &&
-              (sortOrder === 'asc' ? '\u2191' : '\u2193')}
-          </button>
+          <button className="sort-button">By date</button>
+          <button className="sort-button">By Priority</button>
         </div>
       </div>
 
